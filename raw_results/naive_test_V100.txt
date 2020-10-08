@@ -1,0 +1,709 @@
+[yiminc@n241 SBP_GPU.jl]$ julia --project
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.5.1 (2020-08-25)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia> using SBP_GPU
+[ Info: Precompiling SBP_GPU [da3d5682-a42c-47af-ac13-e01c158e862b]
+
+julia> tester_function(D2x,101,4,16,16)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.317172e6
+CPU Through-put                 1.24
+
+Float64(t2) = 246725.0
+Float64(t1) / Float64(t2) = 5.338623974060188
+GPU Through-put (naive)                 6.62
+
+Float64(t3) = 119049.0
+Float64(t1) / Float64(t3) = 11.064116456249108
+GPU Through-put (shared memory)               13.71
+
+julia> tester_function(D2x,1001,4,16,16)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 3.75752302e8
+CPU Through-put                 0.43
+
+Float64(t2) = 1.157553e6
+Float64(t1) / Float64(t2) = 324.6091556930871
+GPU Through-put (naive)               138.50
+
+Float64(t3) = 446245.0
+Float64(t1) / Float64(t3) = 842.0313997915943
+GPU Through-put (shared memory)              359.26
+
+julia> tester_function(D2x,1001,4,16,32)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.58208291e8
+CPU Through-put                 1.01
+
+Float64(t2) = 766751.0
+Float64(t1) / Float64(t2) = 206.3359434809997
+GPU Through-put (naive)               209.09
+
+Float64(t3) = 435519.0
+Float64(t1) / Float64(t3) = 363.26380938604285
+GPU Through-put (shared memory)              368.11
+
+julia> tester_function(D2x,1001,4,16,32)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.56294049e8
+CPU Through-put                 1.03
+
+Float64(t2) = 684312.0
+Float64(t1) / Float64(t2) = 228.3958910555419
+GPU Through-put (naive)               234.28
+
+Float64(t3) = 444773.0
+Float64(t1) / Float64(t3) = 351.40183644240994
+GPU Through-put (shared memory)              360.45
+
+julia> tester_function(D2x,1001,4,16,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 3.93625406e8
+CPU Through-put                 0.41
+
+Float64(t2) = 503542.0
+Float64(t1) / Float64(t2) = 781.7131560028756
+GPU Through-put (naive)               318.38
+
+Float64(t3) = 449388.0
+Float64(t1) / Float64(t3) = 875.914367984904
+GPU Through-put (shared memory)              356.75
+
+julia> tester_function(D2x,1001,4,16,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.5036462e8
+CPU Through-put                 1.07
+
+Float64(t2) = 433714.0
+Float64(t1) / Float64(t2) = 346.6907224576564
+GPU Through-put (naive)               369.64
+
+Float64(t3) = 487892.0
+Float64(t1) / Float64(t3) = 308.1924278323891
+GPU Through-put (shared memory)              328.60
+
+julia> tester_function(D2x,1001,4,32,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.48142356e8
+CPU Through-put                 1.08
+
+Float64(t2) = 430694.0
+Float64(t1) / Float64(t2) = 343.9619683580454
+GPU Through-put (naive)               372.24
+
+Float64(t3) = 454055.0
+Float64(t1) / Float64(t3) = 326.26522337602273
+GPU Through-put (shared memory)              353.09
+
+julia> tester_function(D2x,1001,4,32,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.42179323e8
+CPU Through-put                 1.13
+
+Float64(t2) = 457866.0
+Float64(t1) / Float64(t2) = 310.5260556582057
+GPU Through-put (naive)               350.15
+
+Float64(t3) = 460606.0
+Float64(t1) / Float64(t3) = 308.67883397089923
+GPU Through-put (shared memory)              348.06
+
+julia> tester_function(D2x,1001,4,64,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.61516927e8
+CPU Through-put                 0.99
+
+Float64(t2) = 432743.0
+Float64(t1) / Float64(t2) = 373.23983750170424
+GPU Through-put (naive)               370.47
+
+Float64(t3) = 455331.0
+Float64(t1) / Float64(t3) = 354.7242050288691
+GPU Through-put (shared memory)              352.10
+
+julia> tester_function(D2x,1001,4,64,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.50715774e8
+CPU Through-put                 0.64
+
+Float64(t2) = 476627.0
+Float64(t1) / Float64(t2) = 526.0209220207836
+GPU Through-put (naive)               336.36
+
+Float64(t3) = 466657.0
+Float64(t1) / Float64(t3) = 537.2592160837618
+GPU Through-put (shared memory)              343.55
+
+julia> tester_function(D2x,1001,4,64,64)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.39026614e8
+CPU Through-put                 1.15
+
+Float64(t2) = 494132.0
+Float64(t1) / Float64(t2) = 281.35521277715264
+GPU Through-put (naive)               324.45
+
+Float64(t3) = 476981.0
+Float64(t1) / Float64(t3) = 291.4720167050679
+GPU Through-put (shared memory)              336.11
+
+julia> tester_function(D2x,1001,4,64,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.60002829e8
+CPU Through-put                 1.00
+
+Float64(t2) = 422996.0
+Float64(t1) / Float64(t2) = 378.2608558946184
+GPU Through-put (naive)               379.01
+
+Float64(t3) = 465262.0
+Float64(t1) / Float64(t3) = 343.89833900039116
+GPU Through-put (shared memory)              344.58
+
+julia> tester_function(D2x,1001,4,64,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 3.58771529e8
+CPU Through-put                 0.45
+
+Float64(t2) = 402463.0
+Float64(t1) / Float64(t2) = 891.4397820420759
+GPU Through-put (naive)               398.35
+
+Float64(t3) = 466369.0
+Float64(t1) / Float64(t3) = 769.2868286700017
+GPU Through-put (shared memory)              343.76
+
+julia> tester_function(D2x,1001,4,64,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.39587287e8
+CPU Through-put                 1.15
+
+Float64(t2) = 413460.0
+Float64(t1) / Float64(t2) = 337.60771779615925
+GPU Through-put (naive)               387.75
+
+Float64(t3) = 503044.0
+Float64(t1) / Float64(t3) = 277.4852438355293
+GPU Through-put (shared memory)              318.70
+
+julia> tester_function(D2x,1001,16,64,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.68765709e8
+CPU Through-put                 0.95
+
+Float64(t2) = 489266.0
+Float64(t1) / Float64(t2) = 344.93651510630207
+GPU Through-put (naive)               327.67
+
+Float64(t3) = 543736.0
+Float64(t1) / Float64(t3) = 310.38170913825826
+GPU Through-put (shared memory)              294.85
+
+julia> tester_function(D2x,1001,16,64,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.44384082e8
+CPU Through-put                 1.11
+
+Float64(t2) = 509197.0
+Float64(t1) / Float64(t2) = 283.5524993273723
+GPU Through-put (naive)               314.85
+
+Float64(t3) = 539728.0
+Float64(t1) / Float64(t3) = 267.51267675569915
+GPU Through-put (shared memory)              297.04
+
+julia> tester_function(D2x,1001,16,32,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.63480328e8
+CPU Through-put                 0.98
+
+Float64(t2) = 432884.0
+Float64(t1) / Float64(t2) = 377.6538934217943
+GPU Through-put (naive)               370.35
+
+Float64(t3) = 454973.0
+Float64(t1) / Float64(t3) = 359.3187463871482
+GPU Through-put (shared memory)              352.37
+
+julia> tester_function(D2x,1001,16,32,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.51590497e8
+CPU Through-put                 0.64
+
+Float64(t2) = 398309.0
+Float64(t1) / Float64(t2) = 631.6465281979569
+GPU Through-put (naive)               402.50
+
+Float64(t3) = 463716.0
+Float64(t1) / Float64(t3) = 542.5529785472143
+GPU Through-put (shared memory)              345.73
+
+julia> tester_function(D2x,1001,16,32,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.36508637e8
+CPU Through-put                 1.17
+
+Float64(t2) = 495868.0
+Float64(t1) / Float64(t2) = 275.2922894802649
+GPU Through-put (naive)               323.31
+
+Float64(t3) = 465396.0
+Float64(t1) / Float64(t3) = 293.31716860480105
+GPU Through-put (shared memory)              344.48
+
+julia> tester_function(D2x,1001,16,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.44695809e8
+CPU Through-put                 1.11
+
+Float64(t2) = 417913.0
+Float64(t1) / Float64(t2) = 346.2342856048986
+GPU Through-put (naive)               383.62
+
+Float64(t3) = 374370.0
+Float64(t1) / Float64(t3) = 386.50481876218714
+GPU Through-put (shared memory)              428.24
+
+julia> tester_function(D2x,1001,16,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 3.64884079e8
+CPU Through-put                 0.44
+
+Float64(t2) = 506271.0
+Float64(t1) / Float64(t2) = 720.7287776704571
+GPU Through-put (naive)               316.67
+
+Float64(t3) = 371992.0
+Float64(t1) / Float64(t3) = 980.8922745650444
+GPU Through-put (shared memory)              430.98
+
+julia> tester_function(D2x,1001,16,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.45131667e8
+CPU Through-put                 1.10
+
+Float64(t2) = 416096.0
+Float64(t1) / Float64(t2) = 348.79370866338536
+GPU Through-put (naive)               385.30
+
+Float64(t3) = 374269.0
+Float64(t1) / Float64(t3) = 387.7736788245887
+GPU Through-put (shared memory)              428.36
+
+julia> tester_function(D2x,1001,16,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.55575042e8
+CPU Through-put                 1.03
+
+Float64(t2) = 413609.0
+Float64(t1) / Float64(t2) = 376.1403692859682
+GPU Through-put (naive)               387.61
+
+Float64(t3) = 378335.0
+Float64(t1) / Float64(t3) = 411.20975326099887
+GPU Through-put (shared memory)              423.75
+
+julia> tester_function(D2x,1001,32,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.45720425e8
+CPU Through-put                 1.10
+
+Float64(t2) = 425783.0
+Float64(t1) / Float64(t2) = 342.24105941289343
+GPU Through-put (naive)               376.53
+
+Float64(t3) = 432177.0
+Float64(t1) / Float64(t3) = 337.1776494353008
+GPU Through-put (shared memory)              370.96
+
+julia> tester_function(D2x,1001,32,16,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.54511385e8
+CPU Through-put                 0.63
+
+Float64(t2) = 409062.0
+Float64(t1) / Float64(t2) = 622.1829087033261
+GPU Through-put (naive)               391.92
+
+Float64(t3) = 479777.0
+Float64(t1) / Float64(t3) = 530.4785035547765
+GPU Through-put (shared memory)              334.16
+
+julia> tester_function(D2x,1001,32,8,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.47464973e8
+CPU Through-put                 1.09
+
+Float64(t2) = 414312.0
+Float64(t1) / Float64(t2) = 355.92735185077913
+GPU Through-put (naive)               386.96
+
+Float64(t3) = 375400.0
+Float64(t1) / Float64(t3) = 392.82091901971233
+GPU Through-put (shared memory)              427.06
+
+julia> tester_function(D2x,1001,8,32,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.86476737e8
+CPU Through-put                 0.86
+
+Float64(t2) = 480194.0
+Float64(t1) / Float64(t2) = 388.33624951582067
+GPU Through-put (naive)               333.87
+
+Float64(t3) = 446837.0
+Float64(t1) / Float64(t3) = 417.3260875889866
+GPU Through-put (shared memory)              358.79
+
+julia> tester_function(D2x,1001,8,32,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.39456457e8
+CPU Through-put                 1.15
+
+Float64(t2) = 412276.0
+Float64(t1) / Float64(t2) = 338.259944794264
+GPU Through-put (naive)               388.87
+
+Float64(t3) = 448450.0
+Float64(t1) / Float64(t3) = 310.97437172482995
+GPU Through-put (shared memory)              357.50
+
+julia> tester_function(D2x,1001,32,8,128)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.35513261e8
+CPU Through-put                 1.18
+
+Float64(t2) = 416764.0
+Float64(t1) / Float64(t2) = 325.15586998877063
+GPU Through-put (naive)               384.68
+
+Float64(t3) = 380396.0
+Float64(t1) / Float64(t3) = 356.2426024458722
+GPU Through-put (shared memory)              421.46
+
+julia> tester_function(D2x,1001,32,8,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.53219673e8
+CPU Through-put                 0.63
+
+Float64(t2) = 414581.0
+Float64(t1) / Float64(t2) = 610.7845583854543
+GPU Through-put (naive)               386.70
+
+Float64(t3) = 385641.0
+Float64(t1) / Float64(t3) = 656.6202063577265
+GPU Through-put (shared memory)              415.72
+
+julia> tester_function(D2x,1001,32,8,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.39995442e8
+CPU Through-put                 1.15
+
+Float64(t2) = 417934.0
+Float64(t1) / Float64(t2) = 334.97021539286106
+GPU Through-put (naive)               383.60
+
+Float64(t3) = 387472.0
+Float64(t1) / Float64(t3) = 361.3046671759508
+GPU Through-put (shared memory)              413.76
+
+julia> tester_function(D2x,1001,32,8,512)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.49822079e8
+CPU Through-put                 1.07
+
+Float64(t2) = 446141.0
+Float64(t1) / Float64(t2) = 335.81777733945097
+GPU Through-put (naive)               359.35
+
+Float64(t3) = 390873.0
+Float64(t1) / Float64(t3) = 383.30117199192574
+GPU Through-put (shared memory)              410.16
+
+julia> tester_function(D2x,1001,32,8,512)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.59033008e8
+CPU Through-put                 1.01
+
+Float64(t2) = 511250.0
+Float64(t1) / Float64(t2) = 311.0670083129584
+GPU Through-put (naive)               313.58
+
+Float64(t3) = 380007.0
+Float64(t1) / Float64(t3) = 418.50020657514204
+GPU Through-put (shared memory)              421.89
+
+julia> tester_function(D2x,1001,32,8,512)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.62613621e8
+CPU Through-put                 0.99
+
+Float64(t2) = 428899.0
+Float64(t1) / Float64(t2) = 379.1419914711855
+GPU Through-put (naive)               373.79
+
+Float64(t3) = 378310.0
+Float64(t1) / Float64(t3) = 429.84224842060746
+GPU Through-put (shared memory)              423.78
+
+julia> tester_function(D2x,1001,32,8,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.49132619e8
+CPU Through-put                 0.64
+
+Float64(t2) = 408616.0
+Float64(t1) / Float64(t2) = 609.6986388198211
+GPU Through-put (naive)               392.35
+
+Float64(t3) = 378519.0
+Float64(t1) / Float64(t3) = 658.1773147450987
+GPU Through-put (shared memory)              423.55
+
+julia> tester_function(D2x,1001,32,8,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.37744902e8
+CPU Through-put                 1.16
+
+Float64(t2) = 417806.0
+Float64(t1) / Float64(t2) = 329.68627066150316
+GPU Through-put (naive)               383.72
+
+Float64(t3) = 379998.0
+Float64(t1) / Float64(t3) = 362.48849204469496
+GPU Through-put (shared memory)              421.90
+
+julia> tester_function(D2x,1001,32,16,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.40226462e8
+CPU Through-put                 1.14
+
+Float64(t2) = 432780.0
+Float64(t1) / Float64(t2) = 324.0132677110772
+GPU Through-put (naive)               370.44
+
+Float64(t3) = 435411.0
+Float64(t1) / Float64(t3) = 322.0553959362533
+GPU Through-put (shared memory)              368.20
+
+julia> tester_function(D2x,1001,16,16,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.42221232e8
+CPU Through-put                 1.13
+
+Float64(t2) = 518973.0
+Float64(t1) / Float64(t2) = 274.0436053513381
+GPU Through-put (naive)               308.92
+
+Float64(t3) = 369903.0
+Float64(t1) / Float64(t3) = 384.4825048728991
+GPU Through-put (shared memory)              433.41
+
+julia> tester_function(D2x,1001,16,16,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.45196242e8
+CPU Through-put                 1.10
+
+Float64(t2) = 417669.0
+Float64(t1) / Float64(t2) = 347.63471073984425
+GPU Through-put (naive)               383.85
+
+Float64(t3) = 375123.0
+Float64(t1) / Float64(t3) = 387.0630219954522
+GPU Through-put (shared memory)              427.38
+
+julia> tester_function(D2x,1001,16,16,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 2.48924865e8
+CPU Through-put                 0.64
+
+Float64(t2) = 476143.0
+Float64(t1) / Float64(t2) = 522.7943390956078
+GPU Through-put (naive)               336.71
+
+Float64(t3) = 394455.0
+Float64(t1) / Float64(t3) = 631.0602350077955
+GPU Through-put (shared memory)              406.43
+
+julia> tester_function(D2x,1001,16,16,256)
+f = SBP_GPU.D2x
+gpu_function_naive = SBP_GPU.D2x_GPU_naive
+gpu_function_shared = SBP_GPU.D2x_GPU_shared
+y ≈ Array(y_out) = true
+y ≈ Array(y_out2) = true
+Float64(t1) = 1.36052404e8
+CPU Through-put                 1.18
+
+Float64(t2) = 411275.0
+Float64(t1) / Float64(t2) = 330.80640447389214
+GPU Through-put (naive)               389.81
+
+Float64(t3) = 376195.0
+Float64(t1) / Float64(t3) = 361.65394011084675
+GPU Through-put (shared memory)              426.16
